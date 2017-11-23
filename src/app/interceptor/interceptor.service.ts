@@ -36,7 +36,7 @@ export class InterceptorService<T> extends Store<T> {
     const has = this.permissionsProvider.permissions;
 
     if (_.every(requires, req => _.contains(has, req))) {
-      Store.prototype.dispatch.call(this, action);
+      super.dispatch(action);
     }
   }
 }
