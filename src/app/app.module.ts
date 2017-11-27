@@ -6,8 +6,7 @@ import { CounterComponent } from './counter/counter.component';
 import { StoreModule } from '@ngrx/store';
 import { effects, reducer } from './app.store';
 import { EffectsModule } from '@ngrx/effects';
-import { CurrentPermissionsService } from './services/current-permissions.service';
-import { ActionToPermissionsMapService } from './services/action-to-permissions-map.service';
+import { PermissionsService } from './services/permissions.service';
 import { InterceptorModule } from './interceptor/interceptor.module';
 
 @NgModule({
@@ -19,11 +18,10 @@ import { InterceptorModule } from './interceptor/interceptor.module';
     BrowserModule,
     StoreModule.forRoot(reducer),
     EffectsModule.forRoot(effects),
-    InterceptorModule.forRoot(CurrentPermissionsService, ActionToPermissionsMapService)
+    InterceptorModule.forRoot(PermissionsService)
   ],
   providers: [
-    CurrentPermissionsService,
-    ActionToPermissionsMapService
+    PermissionsService
   ],
   bootstrap: [AppComponent]
 })

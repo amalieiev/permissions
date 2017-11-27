@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CurrentPermissionsService } from './services/current-permissions.service';
+import { PermissionsService } from './services/permissions.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +9,7 @@ import { CurrentPermissionsService } from './services/current-permissions.servic
 export class AppComponent {
   permissions: string[];
 
-  constructor(currentPermissionsService: CurrentPermissionsService) {
-    this.permissions = currentPermissionsService.permissions;
+  constructor(permissionsService: PermissionsService) {
+    this.permissions = permissionsService.permissions;
   }
 }
