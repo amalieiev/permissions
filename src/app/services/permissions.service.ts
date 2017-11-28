@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Permissible } from '../interceptor/interceptor.module';
+import { CanDoAction } from '../interceptor/interceptor.module';
 import * as counterActions from '../counter/counter.actions';
 import { Action } from '@ngrx/store';
 import _ from 'underscore';
 
 @Injectable()
-export class PermissionsService implements Permissible {
+export class PermissionsService implements CanDoAction {
   /**
    * Current user permissions.
    */

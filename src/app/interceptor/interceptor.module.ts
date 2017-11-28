@@ -1,13 +1,13 @@
 import { Injectable, NgModule, Type } from '@angular/core';
 import { Action, ActionsSubject, ReducerManager, StateObservable, Store } from '@ngrx/store';
 
-export interface Permissible {
+export interface CanDoAction {
   canDoAction(action: Action) : boolean;
 }
 
 @NgModule()
 export class InterceptorModule {
-  static forRoot(permissible: Type<Permissible>) {
+  static forRoot(permissible: Type<CanDoAction>) {
     return {
       ngModule: InterceptorModule,
       providers: [
@@ -19,7 +19,7 @@ export class InterceptorModule {
 }
 
 @Injectable()
-export class PermissionsProvider implements Permissible {
+export class PermissionsProvider implements CanDoAction {
   canDoAction(action: Action): boolean {
     return true;
   }
