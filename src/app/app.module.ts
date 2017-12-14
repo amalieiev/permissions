@@ -2,17 +2,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { CounterComponent } from './counter/counter.component';
 import { StoreModule } from '@ngrx/store';
-import { effects, reducer } from './app.store';
+import { effects, reducer } from './store';
 import { EffectsModule } from '@ngrx/effects';
 import { PermissionsService } from './services/permissions.service';
-import { InterceptorModule } from './interceptor/interceptor.module';
+import { InterceptorModule } from './modules/interceptor.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    CounterComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,

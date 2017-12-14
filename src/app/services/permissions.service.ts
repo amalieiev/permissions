@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
-import { CanDoAction } from '../interceptor/interceptor.module';
-import * as counterActions from '../counter/counter.actions';
+import { CanDoAction, CanOverrideAction } from '../modules/interceptor.module';
 import { Action } from '@ngrx/store';
 import _ from 'underscore';
 
+import * as counterActions from '../store/counter/counter.actions';
+import * as systemActions from '../store/system/system.actions';
+
 @Injectable()
-export class PermissionsService implements CanDoAction {
+export class PermissionsService implements CanDoAction, CanOverrideAction {
   /**
    * Current user permissions.
    */
@@ -24,5 +26,9 @@ export class PermissionsService implements CanDoAction {
     const has = this.permissions;
 
     return _.every(requires, req => _.contains(has, req))
+  }
+
+  public canOverrideAction (action: Action): Action {
+    return new systemActions.ManagerOverride(action);
   }
 }

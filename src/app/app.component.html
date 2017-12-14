@@ -1,7 +1,13 @@
-<h2>Application</h2>
-<p>Current user permissions:</p>
-<ul>
-  <li *ngFor="let permission of permissions">{{ permission }}</li>
-</ul>
+<h2>Counter</h2>
+<p>Value: {{ counter$ | async }}</p>
+<div>
+  <button (click)="increment()">Increment</button>
+  <button (click)="decrement()">Decrement</button>
+</div>
 
-<app-counter></app-counter>
+<div *ngIf="(override$ | async).show">
+  <h3>Manager Override</h3>
+  <p>Action {{ (override$ | async).action.type }} requires manager permissions</p>
+  <input type="password" placeholder="password">
+  <button>Submit</button><button (click)="cancelOverride()">Cancel</button>
+</div>
