@@ -24,8 +24,9 @@ export class PermissionsService implements CanDoAction, CanOverrideAction {
   public canDoAction(action: Action): boolean {
     const requires = this.permissionsMap[action.type];
     const has = this.permissions;
+    const canDoAction = _.every(requires, req => _.contains(has, req));
 
-    return _.every(requires, req => _.contains(has, req))
+    return canDoAction;
   }
 
   public canOverrideAction (action: Action): Action {

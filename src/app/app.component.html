@@ -5,9 +5,4 @@
   <button (click)="decrement()">Decrement</button>
 </div>
 
-<div *ngIf="(override$ | async).show">
-  <h3>Manager Override</h3>
-  <p>Action {{ (override$ | async).action.type }} requires manager permissions</p>
-  <input type="password" placeholder="password">
-  <button>Submit</button><button (click)="cancelOverride()">Cancel</button>
-</div>
+<manager-override></manager-override>

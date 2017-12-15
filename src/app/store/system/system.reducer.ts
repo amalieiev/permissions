@@ -35,6 +35,15 @@ export function systemReducer(state = initialState, action: Action) {
           action: null
         }
       };
+    case systemActions.MANAGER_OVERRIDE_SUCCESS:
+      return {
+        ...state,
+        override: {
+          ...state.override,
+          show: false,
+          action: null
+        }
+      };
     default:
       return state;
   }

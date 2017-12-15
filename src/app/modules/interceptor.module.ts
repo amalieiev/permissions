@@ -43,10 +43,8 @@ export class Interceptor<T> extends Store<T> {
     const overrideAction = this.permissionsProvider.canOverrideAction(action);
 
     if (canDoAction) {
-      console.log(action);
       super.dispatch(action);
     } else if (overrideAction) {
-      console.log(overrideAction);
       super.dispatch(overrideAction);
     }
   }
