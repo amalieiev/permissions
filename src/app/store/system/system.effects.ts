@@ -7,7 +7,7 @@ export class SystemEffects {
   constructor(private actions$: Actions) {}
 
   @Effect()
-  increment$ = this.actions$
+  managerOverrideSuccess$ = this.actions$
     .ofType(systemActions.MANAGER_OVERRIDE_SUCCESS)
     .map((action) => {
       return action['payload'];
