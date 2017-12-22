@@ -1,8 +1,10 @@
-<h2>Counter</h2>
+<mat-toolbar color="primary">
+  <span>Counter</span>
+</mat-toolbar>
 <p>Value: {{ counter$ | async }}</p>
 <div>
-  <button (click)="increment()">Increment</button>
-  <button (click)="decrement()">Decrement</button>
+  <button mat-raised-button color="primary" (click)="increment()">Increment</button>
+  <button mat-raised-button color="secondary" (click)="decrement()">Decrement</button>
 </div>
 
 <manager-override></manager-override>

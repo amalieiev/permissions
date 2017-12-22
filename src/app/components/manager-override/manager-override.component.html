@@ -1,7 +1,15 @@
 <div *ngIf="(showOverride$ | async)">
-  <h3>Manager Override</h3>
-  <p>Action {{ action.type }} requires manager permissions</p>
-  <input type="password" placeholder="password">
-  <button (click)="submitOverride()">Submit</button>
-  <button (click)="cancelOverride()">Cancel</button>
+  <h3 mat-dialog-title>Manager Override</h3>
+  <mat-dialog-content>
+    <p>Action <strong>{{ action.type }}</strong> requires manager permissions</p>
+    <form>
+      <mat-form-field>
+        <input matInput placeholder="Password">
+      </mat-form-field>
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-raised-button color="primary" (click)="submitOverride()">Submit</button>
+    <button mat-raised-button color="warn" (click)="cancelOverride()">Cancel</button>
+  </mat-dialog-actions>
 </div>

@@ -9,6 +9,7 @@ import { effects, reducer } from './store';
 import { EffectsModule } from '@ngrx/effects';
 import { PermissionsService } from './services/permissions.service';
 import { InterceptorModule } from './modules/interceptor.module';
+import { MaterialModule } from './modules/material.module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
@@ -21,7 +22,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     StoreModule.forRoot(reducer),
     EffectsModule.forRoot(effects),
     InterceptorModule.forRoot(PermissionsService),
-    StoreDevtoolsModule.instrument()
+    StoreDevtoolsModule.instrument(),
+    MaterialModule
   ],
   providers: [
     PermissionsService
