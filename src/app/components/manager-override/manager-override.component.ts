@@ -8,7 +8,8 @@ import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'manager-override',
-  templateUrl: './manager-override.component.html'
+  templateUrl: './manager-override.component.html',
+  styleUrls: ['./manager-override.component.css']
 })
 export class ManagerOverrideComponent implements OnInit {
   public showOverride$: Observable<boolean>;
