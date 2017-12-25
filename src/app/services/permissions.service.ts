@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanDoAction, CanOverrideAction } from '../modules/interceptor.module';
 import { Action } from '@ngrx/store';
-import _ from 'underscore';
+import { every, find } from 'lodash';
 
 import * as counterActions from '../store/counter/counter.actions';
 import * as systemActions from '../store/system/system.actions';
@@ -22,9 +22,14 @@ export class PermissionsService implements CanDoAction, CanOverrideAction {
   };
 
   public canDoAction(action: Action): boolean {
-    const requires = this.permissionsMap[action.type];
-    const has = this.permissions;
-    const canDoAction = _.every(requires, req => _.contains(has, req));
+    const requiredPermissions = this.permissionsMap[action.type];
+    const availablePermissions = this.permissions;
+
+    const canDoAction = every(requiredPermissions, requiredPermission => {
+      return find(availablePermissions, availablePermission => {
+        return requiredPermission === availablePermission;
+      });
+    });
 
     return canDoAction;
   }
