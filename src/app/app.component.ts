@@ -5,7 +5,6 @@ import { Store } from '@ngrx/store';
 import * as counterActions from './store/counter/counter.actions';
 import 'rxjs/add/operator/map';
 import { MatDialog } from '@angular/material';
-import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-root',
