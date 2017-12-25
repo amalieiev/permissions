@@ -4,7 +4,6 @@ import { AppState } from './store';
 import { Store } from '@ngrx/store';
 import * as counterActions from './store/counter/counter.actions';
 import 'rxjs/add/operator/map';
-import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +13,7 @@ import { MatDialog } from '@angular/material';
 export class AppComponent implements OnInit {
   public counter$: Observable<number>;
 
-  constructor(private store: Store<AppState>, public dialog: MatDialog) {
+  constructor(private store: Store<AppState>) {
   }
 
   ngOnInit() {
