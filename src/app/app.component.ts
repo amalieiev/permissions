@@ -29,8 +29,4 @@ export class AppComponent implements OnInit {
   public decrement() {
     this.store.dispatch(new counterActions.Decrement());
   }
-
-  public openDialog() {
-    this.dialog.open(ConfirmationDialogComponent);
-  }
 }
