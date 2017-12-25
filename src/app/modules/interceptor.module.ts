@@ -4,9 +4,6 @@ import { Action, ActionsSubject, ReducerManager, StateObservable, Store } from '
 export interface CanDoAction {
   canDoAction(action: Action) : boolean;
 }
-export interface CanOverrideAction {
-  canOverrideAction(action: Action) : Action;
-}
 
 @NgModule()
 export class InterceptorModule {
@@ -22,13 +19,9 @@ export class InterceptorModule {
 }
 
 @Injectable()
-export class PermissionsProvider implements CanDoAction, CanOverrideAction {
+export class PermissionsProvider implements CanDoAction {
   canDoAction(action: Action): boolean {
     return true;
-  }
-
-  canOverrideAction(action: Action): Action {
-    return action;
   }
 }
 
@@ -40,12 +33,9 @@ export class Interceptor<T> extends Store<T> {
 
   dispatch(action) {
     const canDoAction = this.permissionsProvider.canDoAction(action);
-    const overrideAction = this.permissionsProvider.canOverrideAction(action);
 
     if (canDoAction) {
       super.dispatch(action);
-    } else if (overrideAction) {
-      super.dispatch(overrideAction);
     }
   }
 }

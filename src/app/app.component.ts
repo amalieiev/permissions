@@ -4,6 +4,8 @@ import { AppState } from './store';
 import { Store } from '@ngrx/store';
 import * as counterActions from './store/counter/counter.actions';
 import 'rxjs/add/operator/map';
+import { MatDialog } from '@angular/material';
+import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +15,7 @@ import 'rxjs/add/operator/map';
 export class AppComponent implements OnInit {
   public counter$: Observable<number>;
 
-  constructor(private store: Store<AppState>) {
+  constructor(private store: Store<AppState>, public dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -26,5 +28,9 @@ export class AppComponent implements OnInit {
 
   public decrement() {
     this.store.dispatch(new counterActions.Decrement());
+  }
+
+  public openDialog() {
+    this.dialog.open(ConfirmationDialogComponent);
   }
 }

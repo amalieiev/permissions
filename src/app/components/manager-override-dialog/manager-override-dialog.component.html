@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>Manager Override</h2>
+<mat-dialog-content>
+  <p>Action <strong>{{ data.action.type }}</strong> requires manager approval</p>
+  <mat-form-field style="width: 100%">
+    <input matInput type="password" placeholder="password">
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+  <button mat-raised-button color="primary" (click)="onAuthorize()">Confirm</button>
+</mat-dialog-actions>

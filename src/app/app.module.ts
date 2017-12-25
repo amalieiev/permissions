@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { ManagerOverrideComponent } from './components/manager-override/manager-override.component';
+import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 
 import { StoreModule } from '@ngrx/store';
 import { effects, reducer } from './store';
@@ -11,11 +11,17 @@ import { PermissionsService } from './services/permissions.service';
 import { InterceptorModule } from './modules/interceptor.module';
 import { MaterialModule } from './modules/material.module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { ManagerOverrideDialogComponent } from './components/manager-override-dialog/manager-override-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ManagerOverrideComponent
+    ConfirmationDialogComponent,
+    ManagerOverrideDialogComponent
+  ],
+  entryComponents: [
+    ConfirmationDialogComponent,
+    ManagerOverrideDialogComponent
   ],
   imports: [
     BrowserModule,

@@ -1,13 +1,17 @@
 import { Injectable } from '@angular/core';
-import { CanDoAction, CanOverrideAction } from '../modules/interceptor.module';
+import { CanDoAction } from '../modules/interceptor.module';
 import { Action } from '@ngrx/store';
 import { every, find } from 'lodash';
 
 import * as counterActions from '../store/counter/counter.actions';
-import * as systemActions from '../store/system/system.actions';
+import { MatDialog } from '@angular/material';
+import { ConfirmationDialogComponent } from '../components/confirmation-dialog/confirmation-dialog.component';
 
 @Injectable()
-export class PermissionsService implements CanDoAction, CanOverrideAction {
+export class PermissionsService implements CanDoAction {
+  constructor(private dialog: MatDialog) {
+  }
+  public confirmedActions: Action[] = [];
   /**
    * Current user permissions.
    */
@@ -31,10 +35,28 @@ export class PermissionsService implements CanDoAction, CanOverrideAction {
       });
     });
 
+    if (!canDoAction) {
+      const confirmedAction = this.confirmedActions.find(confirmedAction => {
+        return action.type === confirmedAction.type;
+      });
+
+      if(confirmedAction) {
+        this.confirmedActions.splice(this.confirmedActions.indexOf(confirmedAction), 1);
+        return true;
+      } else {
+        this.dialog.open(ConfirmationDialogComponent, {
+          data: {
+            action,
+            confirm: this.confirm.bind(this)
+          }
+        });
+      }
+    }
+
     return canDoAction;
   }
 
-  public canOverrideAction (action: Action): Action {
-    return new systemActions.ManagerOverride(action);
+  public confirm(action) {
+    this.confirmedActions.push(action);
   }
 }
