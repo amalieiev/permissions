@@ -1,5 +1,7 @@
-import { Injectable, NgModule, Type } from '@angular/core';
+import { Location } from '@angular/common';
+import { Compiler, Injectable, Injector, NgModule, NgModuleFactoryLoader, Type } from '@angular/core';
 import { Action, ActionsSubject, ReducerManager, StateObservable, Store } from '@ngrx/store';
+import { ChildrenOutletContexts, NavigationExtras, Router, Routes, UrlSerializer } from '@angular/router';
 
 export interface CanDoAction {
   canDoAction(action: Action) : boolean;
@@ -11,7 +13,8 @@ export class InterceptorModule {
     return {
       ngModule: InterceptorModule,
       providers: [
-        {provide: Store, useClass: Interceptor},
+        {provide: Store, useClass: StoreInterceptor},
+        // {provide: Router, useClass: RouterInterceptor},
         {provide: PermissionsProvider, useClass: permissible},
       ]
     }
@@ -26,7 +29,7 @@ export class PermissionsProvider implements CanDoAction {
 }
 
 @Injectable()
-export class Interceptor<T> extends Store<T> {
+export class StoreInterceptor<T> extends Store<T> {
   constructor(state$: StateObservable, actionsObserver: ActionsSubject, reducerManager: ReducerManager, private permissionsProvider: PermissionsProvider) {
     super(state$, actionsObserver, reducerManager);
   }
@@ -37,5 +40,16 @@ export class Interceptor<T> extends Store<T> {
     if (canDoAction) {
       super.dispatch(action);
     }
+  }
+}
+
+@Injectable()
+export class RouterInterceptor extends Router {
+  constructor(rootComponentType: Type<any> | null, urlSerializer: UrlSerializer, rootContexts: ChildrenOutletContexts, location: Location, injector: Injector, loader: NgModuleFactoryLoader, compiler: Compiler, config: Routes) {
+    super(rootComponentType, urlSerializer, rootContexts, location, injector, loader, compiler, config);
+  }
+
+  navigate(commands: any[], extras?: NavigationExtras): Promise<boolean> {
+    return super.navigate(commands, extras);
   }
 }

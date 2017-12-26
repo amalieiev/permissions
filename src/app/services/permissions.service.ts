@@ -20,13 +20,13 @@ export class PermissionsService implements CanDoAction {
   /**
    * Action to permission map.
    */
-  public permissionsMap = {
+  public actionsPermissionsMap = {
     [counterActions.INCREMENT]: ['increment'],
     [counterActions.DECREMENT]: ['decrement']
   };
 
   public canDoAction(action: Action): boolean {
-    const requiredPermissions = this.permissionsMap[action.type];
+    const requiredPermissions = this.actionsPermissionsMap[action.type];
     const availablePermissions = this.permissions;
 
     const canDoAction = every(requiredPermissions, requiredPermission => {
@@ -56,6 +56,9 @@ export class PermissionsService implements CanDoAction {
     return canDoAction;
   }
 
+  /**
+   * Add action to allowed actions stack
+   */
   public confirm(action) {
     this.confirmedActions.push(action);
   }

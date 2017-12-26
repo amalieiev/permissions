@@ -3,6 +3,8 @@
 </mat-toolbar>
 <p>Value: {{ counter$ | async }}</p>
 <div>
-  <button mat-raised-button color="primary" (click)="increment()">Increment</button>
+  <button mat-raised-button color="primary" (click)="increment()" routerLink="/products">Increment</button>
   <button mat-raised-button color="secondary" (click)="decrement()">Decrement</button>
 </div>
+
+<router-outlet></router-outlet>

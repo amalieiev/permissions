@@ -6,16 +6,20 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
 
 import { StoreModule } from '@ngrx/store';
 import { effects, reducer } from './store';
+import { routes } from './routes';
 import { EffectsModule } from '@ngrx/effects';
 import { PermissionsService } from './services/permissions.service';
 import { InterceptorModule } from './modules/interceptor.module';
 import { MaterialModule } from './modules/material.module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ManagerOverrideDialogComponent } from './components/manager-override-dialog/manager-override-dialog.component';
+import { ProductsComponent } from './components/products/products.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ProductsComponent,
     ConfirmationDialogComponent,
     ManagerOverrideDialogComponent
   ],
@@ -25,11 +29,12 @@ import { ManagerOverrideDialogComponent } from './components/manager-override-di
   ],
   imports: [
     BrowserModule,
+    MaterialModule,
     StoreModule.forRoot(reducer),
     EffectsModule.forRoot(effects),
+    RouterModule.forRoot(routes),
     InterceptorModule.forRoot(PermissionsService),
-    StoreDevtoolsModule.instrument(),
-    MaterialModule
+    StoreDevtoolsModule.instrument()
   ],
   providers: [
     PermissionsService
