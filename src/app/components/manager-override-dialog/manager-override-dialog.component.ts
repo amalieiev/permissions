@@ -22,4 +22,8 @@ export class ManagerOverrideDialogComponent {
     this.data.confirm(this.data.action);
     this.store.dispatch(this.data.action);
   }
+
+  onCancel() {
+    this.data.reject();
+  }
 }

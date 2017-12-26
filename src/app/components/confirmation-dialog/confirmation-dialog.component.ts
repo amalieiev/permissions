@@ -18,4 +18,8 @@ export class ConfirmationDialogComponent {
       data: this.data
     });
   }
+
+  onNoClick() {
+    this.data.reject();
+  }
 }
