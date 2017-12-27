@@ -15,11 +15,13 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ManagerOverrideDialogComponent } from './components/manager-override-dialog/manager-override-dialog.component';
 import { ProductsComponent } from './components/products/products.component';
 import { RouterModule } from '@angular/router';
+import { AdminComponent } from './components/admin/admin.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductsComponent,
+    AdminComponent,
     ConfirmationDialogComponent,
     ManagerOverrideDialogComponent
   ],

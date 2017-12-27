@@ -6,6 +6,7 @@ import {MatInputModule} from '@angular/material';
 import {MatDialogModule} from '@angular/material';
 import {MatToolbarModule} from '@angular/material';
 import {MatChipsModule} from '@angular/material';
+import {MatCardModule} from '@angular/material';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import {MatChipsModule} from '@angular/material';
     MatInputModule,
     MatDialogModule,
     MatToolbarModule,
-    MatChipsModule
+    MatChipsModule,
+    MatCardModule
   ],
   exports: [
     BrowserAnimationsModule,
@@ -22,7 +24,8 @@ import {MatChipsModule} from '@angular/material';
     MatInputModule,
     MatDialogModule,
     MatToolbarModule,
-    MatChipsModule
+    MatChipsModule,
+    MatCardModule
   ]
 })
 export class MaterialModule {}

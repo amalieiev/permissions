@@ -1,15 +1,20 @@
-import { CounterState, counterReducer } from './counter/counter.reducer';
+import { ProductsState, productsReducer } from './products/products.reducer';
+import { OrderState, orderReducer } from './order/order.reducer';
 
-import { CounterEffects } from './counter/counter.effects';
+import { ProductsEffects } from './products/products.effects';
+import { OrderEffects } from './order/order.effects';
 
 export interface AppState {
-  counter: CounterState
+  products: ProductsState,
+  order: OrderState
 }
 
 export const reducer = {
-  counter: counterReducer
+  products: productsReducer,
+  order: orderReducer
 };
 
 export const effects = [
-  CounterEffects
+  ProductsEffects,
+  OrderEffects
 ];

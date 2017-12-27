@@ -1,10 +1,7 @@
-<mat-toolbar color="primary">
-  <span>Counter</span>
+<mat-toolbar color="primary" class="toolbar-top">
+  <span class="logo" routerLink="/">eMarket</span>
+  <span class="spacer"></span>
+  <button mat-button routerLink="/admin">Admin</button>
 </mat-toolbar>
-<p>Value: {{ counter$ | async }}</p>
-<div>
-  <button mat-raised-button color="primary" (click)="increment()" routerLink="/products">Increment</button>
-  <button mat-raised-button color="secondary" (click)="decrement()">Decrement</button>
-</div>
 
 <router-outlet></router-outlet>

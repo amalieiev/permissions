@@ -1,22 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
-import * as counterActions from './counter.actions';
+import * as productsActions from './products.actions';
 
 @Injectable()
-export class CounterEffects {
+export class ProductsEffects {
   constructor(private actions$: Actions) {}
 
   @Effect()
   increment$ = this.actions$
-    .ofType(counterActions.INCREMENT)
+    .ofType(productsActions.INCREMENT)
     .map(() => {
-      return new counterActions.IncrementSuccess();
+      return new productsActions.IncrementSuccess();
     });
 
   @Effect()
   decrement$ = this.actions$
-    .ofType(counterActions.DECREMENT)
+    .ofType(productsActions.DECREMENT)
     .map(() => {
-      return new counterActions.DecrementSuccess();
+      return new productsActions.DecrementSuccess();
     });
 }

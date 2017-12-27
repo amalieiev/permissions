@@ -1,7 +1,9 @@
 import { Routes } from '@angular/router';
-import { ProductsComponent } from '../components/products/products.component';
 import { PermissionsService } from '../services/permissions.service';
+import { ProductsComponent } from '../components/products/products.component';
+import { AdminComponent } from '../components/admin/admin.component';
 
 export const routes: Routes = [
-  { path: 'products', component: ProductsComponent, canActivate: [PermissionsService] }
+  { path: '', component: ProductsComponent },
+  { path: 'admin', component: AdminComponent, canActivate: [PermissionsService] },
 ];
