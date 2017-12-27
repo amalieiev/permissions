@@ -3,7 +3,7 @@ import { CanDoAction } from '../modules/interceptor.module';
 import { Action } from '@ngrx/store';
 import { every, find } from 'lodash';
 
-import * as productsActions from '../store/products/products.actions';
+import * as orderActions from '../store/order/order.actions';
 import { MatDialog } from '@angular/material';
 import { ConfirmationDialogComponent } from '../components/confirmation-dialog/confirmation-dialog.component';
 import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot } from '@angular/router';
@@ -16,14 +16,14 @@ export class PermissionsService implements CanDoAction, CanActivate {
   /**
    * Current user permissions.
    */
-  public permissions = ['increment'];
+  public permissions = ['add_item', 'create_order'];
 
   /**
    * Action to permission map.
    */
   public actionsPermissionsMap = {
-    [productsActions.INCREMENT]: ['increment'],
-    [productsActions.DECREMENT]: ['decrement']
+    [orderActions.CREATE_ORDER]: ['create_order'],
+    [orderActions.ADD_ITEM]: ['add_item']
   };
 
   public canDoAction(action: Action): boolean {

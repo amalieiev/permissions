@@ -5,18 +5,4 @@ import * as productsActions from './products.actions';
 @Injectable()
 export class ProductsEffects {
   constructor(private actions$: Actions) {}
-
-  @Effect()
-  increment$ = this.actions$
-    .ofType(productsActions.INCREMENT)
-    .map(() => {
-      return new productsActions.IncrementSuccess();
-    });
-
-  @Effect()
-  decrement$ = this.actions$
-    .ofType(productsActions.DECREMENT)
-    .map(() => {
-      return new productsActions.DecrementSuccess();
-    });
 }
